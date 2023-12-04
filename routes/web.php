@@ -17,3 +17,10 @@ Route::get('/', function ()
 {
     return view('welcome');
 });
+
+Route::prefix('session')->group(
+    static function ()
+    {
+        include 'episodes/1.introduction.php';
+    }
+);
