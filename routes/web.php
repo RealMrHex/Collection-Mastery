@@ -22,5 +22,6 @@ Route::prefix('session')->group(
     static function ()
     {
         include 'episodes/1.introduction.php';
+        include 'episodes/2.collection-introduction.php';
     }
 );
