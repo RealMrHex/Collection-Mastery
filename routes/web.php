@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,7 +22,7 @@ Route::get('/', function ()
 Route::prefix('session')->group(
     static function ()
     {
-        include 'episodes/1.introduction.php';
-        include 'episodes/2.collection-introduction.php';
+        $episodeFiles = File::files(base_path('routes/episodes'));
+        collect($episodeFiles)->each(fn(SplFileInfo $file) => include $file->getPathname());
     }
 );
