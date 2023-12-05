@@ -17,3 +17,15 @@ Route::get('5', static function ()
 
     dd($colors, $collection);
 });
+
+Route::get('6', static function ()
+{
+    Collection::macro('ucFirstPrefixed', function (string $prefix = '')
+    {
+        return $this->map(fn($item) => $prefix . ucfirst($item));
+    });
+
+    $students   = ['john', 'rose'];
+    $collection = collect($students)->ucFirstPrefixed('#------');
+    dd($students, $collection);
+});
