@@ -56,4 +56,12 @@ Route::get('12', static function ()
     dd($colors, $colorsCollection, $newCollection);
 });
 
+Route::get('13', static function ()
+{
+    $person     = collect(['first_name', 'last_name', 'city', 'age']);
+    $realPerson = $person->combine(['Negar', 'Jf.', 'N.Y', '21']);
+    dd($person->all(), $realPerson->all(), $realPerson);
+});
+
+
 
