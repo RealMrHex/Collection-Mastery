@@ -47,4 +47,13 @@ Route::get('11', static function ()
     dd($flightMembers, $flattenFlightMembers);
 });
 
+Route::get('12', static function ()
+{
+    $colors           = ['red', 'green', 'blue'];
+    $colorsCollection = collect($colors);
+    $newCollection    = $colorsCollection->collect();
+
+    dd($colors, $colorsCollection, $newCollection);
+});
+
 
