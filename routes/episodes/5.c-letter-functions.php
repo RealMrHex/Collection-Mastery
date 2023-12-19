@@ -21,7 +21,7 @@ Route::get('10', static function ()
         }
     );
 
-    $names = collect(['Ali', 'Reza', 'Mohammad', 'And', 'Saeed', 'Qolam', 'And', 'Niaz']);
+    $names        = collect(['Ali', 'Reza', 'Mohammad', 'And', 'Saeed', 'Qolam', 'And', 'Niaz']);
     $chunkedNames = $names->chunkWhile(
         function ($currentValue)
         {
@@ -32,5 +32,19 @@ Route::get('10', static function ()
     dd($lettersArray, $letters, $chunkedLetters->all(), $chunkedNames);
 });
 
+Route::get('11', static function ()
+{
+    $flightMembers = collect(
+        [
+            ['Negar', 'Sogand', 'Reza'],
+            ['Armin', 'Ali', 'Mona'],
+            ['Saeed', 'Kimia', 'Kia'],
+        ]
+    );
+
+    $flattenFlightMembers = $flightMembers->collapse();
+
+    dd($flightMembers, $flattenFlightMembers);
+});
 
 
