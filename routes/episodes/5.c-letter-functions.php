@@ -63,5 +63,14 @@ Route::get('13', static function ()
     dd($person->all(), $realPerson->all(), $realPerson);
 });
 
+Route::get('14', static function ()
+{
+    $students    = collect(['Negar']);
+    $newStudents = $students
+        ->concat(['Armin', 'Reza'])
+        ->concat(['first_name' => 'Kimia'])
+        ->concat(['Alireza', 'name' => 'Amir']);
 
+    dd($students, $newStudents);
+});
 
