@@ -69,8 +69,42 @@ Route::get('14', static function ()
     $newStudents = $students
         ->concat(['Armin', 'Reza'])
         ->concat(['first_name' => 'Kimia'])
-        ->concat(['Alireza', 'name' => 'Amir']);
+        ->concat(['Alireza', 'name' => 'Amir'])
+    ;
 
     dd($students, $newStudents);
 });
 
+Route::get('15', static function ()
+{
+    $numbers       = collect([1, 2, 3, 4, 5]);
+    $isTwoExists   = $numbers->contains(2); // true
+    $isSevenExists = $numbers->contains(7); // false
+    $result        = $numbers->contains(
+        function ($value, $index)
+        {
+            return $value > 5;
+            #dd($value, $index); // value: 1, index: 0
+        }
+    );
+    #dd($isTwoExists, $isSevenExists, $result); // true, false, false
+
+    $products = collect(
+        [
+            ['product' => 'Laptop', 'model' => 'Lenovo', 'price' => 1700, 'currency' => 'Euro'],
+            ['product' => 'Mobile', 'model' => 'Apple', 'price' => 1000, 'currency' => 'Euro'],
+        ]
+    );
+
+    $isLaptopExists  = $products->contains('product', 'Laptop');  // true
+    $isLenovoExists  = $products->contains('model', 'Lenovo');    // true
+    $isMacBookExists = $products->contains('product', 'MacBook'); // false
+
+    #dd($isLaptopExists, $isLenovoExists, $isMacBookExists);
+
+    $flight     = collect(['from' => 'new-york', 'to' => 'iran', 'price' => 1950, 'currency' => 'dollar']);
+    $isNYExists = $flight->contains('new-york');    // true
+    $isLAExists = $flight->contains('los-angeles'); // false
+
+    dd($isNYExists, $isLAExists);
+});
