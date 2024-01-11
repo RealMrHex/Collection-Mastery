@@ -157,7 +157,7 @@ Route::get('18', static function ()
 
 Route::get('19', static function ()
 {
-    $cart = collect(
+    $cart             = collect(
         [
             'juice', // iteration priority
             'milk', 'milk', 'egg', 'soda', 'egg', 'meat', 'brice',
@@ -168,7 +168,7 @@ Route::get('19', static function ()
     $cartDuplications = $cart->countBy();
     // dd($cartDuplications);
 
-    $emailList = collect(
+    $emailList     = collect(
         [
             'ali@gmail.com',
             'john@yahoo.com',
@@ -178,7 +178,7 @@ Route::get('19', static function ()
             'jack@gmail.com',
             'david@gmail.com',
             'hex@proton.mail',
-            'mrs@proton.mail'
+            'mrs@proton.mail',
         ]
     );
     $mailProviders = $emailList->countBy(
@@ -189,4 +189,14 @@ Route::get('19', static function ()
     );
 
     dd($mailProviders);
+});
+
+Route::get('20', static function ()
+{
+    $cars   = collect(['Challenger', 'Mustang', 'Mercedes CLS', 'Dena Plus']);
+    $colors = ['Metallic Black', 'Carbonic White', 'Gray', 'Red'];
+    $year   = [2020, 2023];
+    $result = $cars->crossJoin($colors, $year);
+
+    dd($result->all());
 });
