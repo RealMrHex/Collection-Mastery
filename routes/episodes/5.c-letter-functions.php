@@ -127,12 +127,12 @@ Route::get('17', static function ()
     $numbers = collect([1, 2, '3', '4']);
 
     dd(
-        $numbers->contains('2'), // true
-        $numbers->contains(3), // true
+        $numbers->contains('2'),       // true
+        $numbers->contains(3),         // true
         $numbers->containsStrict('2'), // false
-        $numbers->containsStrict(3), // false
+        $numbers->containsStrict(3),   // false
         //==================================
-        $numbers->containsStrict(2), // true
+        $numbers->containsStrict(2),   // true
         $numbers->containsStrict('3'), // true
     );
 
@@ -147,10 +147,46 @@ Route::get('17', static function ()
 Route::get('18', static function ()
 {
     $colors = collect(['red', 'amber', 'yellow', 'white']); // items: 4
-    $empty = collect(); // items: 0
+    $empty  = collect();                                    // items: 0
 
     dd(
         $colors->count(),
         $empty->count()
     );
+});
+
+Route::get('19', static function ()
+{
+    $cart = collect(
+        [
+            'juice', // iteration priority
+            'milk', 'milk', 'egg', 'soda', 'egg', 'meat', 'brice',
+            'oil', 'egg', 'milk', 'soda', 'wine', 'juice', 'juice',
+            'milk',
+        ]
+    );
+    $cartDuplications = $cart->countBy();
+    // dd($cartDuplications);
+
+    $emailList = collect(
+        [
+            'ali@gmail.com',
+            'john@yahoo.com',
+            'rose@yahoo.com',
+            'mia@yahoo.com',
+            'sarah@gmail.com',
+            'jack@gmail.com',
+            'david@gmail.com',
+            'hex@proton.mail',
+            'mrs@proton.mail'
+        ]
+    );
+    $mailProviders = $emailList->countBy(
+        function ($email)
+        {
+            return substr(strrchr($email, '@'), 1);
+        }
+    );
+
+    dd($mailProviders);
 });
