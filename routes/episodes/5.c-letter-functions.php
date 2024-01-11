@@ -108,3 +108,16 @@ Route::get('15', static function ()
 
     dd($isNYExists, $isLAExists);
 });
+
+Route::get('16', static function ()
+{
+    $colors  = collect(['red', 'green', 'blue']); // items: 3
+    $fruits  = collect(['apple']);                // items: 1
+    $nothing = collect([]);                       // items: 0
+
+    dd(
+        $colors->containsOneItem(), // false
+        $fruits->containsOneItem(), // true
+        $nothing->containsOneItem() // false
+    );
+});
