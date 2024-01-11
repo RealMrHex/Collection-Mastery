@@ -121,3 +121,25 @@ Route::get('16', static function ()
         $nothing->containsOneItem() // false
     );
 });
+
+Route::get('17', static function ()
+{
+    $numbers = collect([1, 2, '3', '4']);
+
+    dd(
+        $numbers->contains('2'), // true
+        $numbers->contains(3), // true
+        $numbers->containsStrict('2'), // false
+        $numbers->containsStrict(3), // false
+        //==================================
+        $numbers->containsStrict(2), // true
+        $numbers->containsStrict('3'), // true
+    );
+
+    // ==  loose comparison
+    // 2 (int) == '2' (string) => true > loose
+
+    // === strict comparison
+    // 2 (int) === '2' (string) => false > strict
+    // 2 (int) === 2 (int) => true > strict
+});
