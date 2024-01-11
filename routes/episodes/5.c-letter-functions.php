@@ -143,3 +143,14 @@ Route::get('17', static function ()
     // 2 (int) === '2' (string) => false > strict
     // 2 (int) === 2 (int) => true > strict
 });
+
+Route::get('18', static function ()
+{
+    $colors = collect(['red', 'amber', 'yellow', 'white']); // items: 4
+    $empty = collect(); // items: 0
+
+    dd(
+        $colors->count(),
+        $empty->count()
+    );
+});
