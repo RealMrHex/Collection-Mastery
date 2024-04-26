@@ -21,7 +21,7 @@ Route::get('22', static function ()
         [
             'armin' => 'Apple',
             'negar' => 'Orange',
-            'sevda' => 'Pineapple'
+            'sevda' => 'Pineapple',
         ]
     );
 
@@ -34,4 +34,28 @@ Route::get('22', static function ()
     );
 
     dd($result->all(), $dataResult->all());
+});
+
+Route::get('23', static function ()
+{
+    $data = collect(
+        [
+            'type'    => 'fruit',
+            'model'   => 'apple',
+            'country' => 'united states',
+            'year'    => 2023,
+        ]
+    );
+
+    $result = $data->diffAssoc(
+        [
+            'type'         => 'Mobile',
+            'model'        => 'Apple',
+            'country'      => 'united states',
+            'year'         => '2023',
+            'is_refreshed' => true,
+        ]
+    );
+
+    dd($result);
 });
