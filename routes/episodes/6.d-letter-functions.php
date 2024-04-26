@@ -82,3 +82,24 @@ Route::get('24', static function ()
 
     dd($output->all());
 });
+
+Route::get('25', static function ()
+{
+    $collection = collect(
+        [
+            'key-1' => 'one',
+            'key-2' => 'two',
+            'key-3' => 'three',
+            'key-4' => 'four',
+        ]
+    );
+
+    $output = $collection->diffKeys(
+        [
+            'key-4' => 'new-four',
+            'key-5' => 'five',
+        ]
+    );
+
+    dd($output);
+});
