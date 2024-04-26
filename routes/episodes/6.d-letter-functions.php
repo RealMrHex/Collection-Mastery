@@ -103,3 +103,45 @@ Route::get('25', static function ()
 
     dd($output);
 });
+
+Route::get('26', static function ()
+{
+    $numbers = collect([1, 2, 3, 4, 5, 6, 10]);
+    $output  = $numbers->doesntContain(
+        static function ($value, $index)
+        {
+            return $value > 6;
+        }
+    );
+
+    /*dd(
+        $output
+        ? 'does not contain any value greater than 6'
+        : 'does contain any value greater than 6'
+    );*/
+
+    $names  = collect(['armin', 'negar', 'sevda']);
+    $output = $names->doesntContain('saeed');
+    // dd($output);
+
+    $cart   = collect(
+        [
+            'item'  => 'Watch',
+            'model' => 'Apple Watch 7th Series',
+            'price' => '2000$',
+            'qty'   => '1',
+        ]
+    );
+    $output = $cart->doesntContain('Watch');
+    // dd($output);
+
+    $products = collect(
+        [
+            ['product' => 'Desk', 'price' => 200],
+            ['product' => 'Chair', 'price' => 100],
+        ]
+    );
+    $output = $products->doesntContain('product', 'Table');
+    dd($output);
+
+});
