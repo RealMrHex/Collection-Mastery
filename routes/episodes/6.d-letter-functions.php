@@ -59,3 +59,26 @@ Route::get('23', static function ()
 
     dd($result);
 });
+
+Route::get('24', static function ()
+{
+    $collection = collect(
+        [
+            'type'  => 'fruit',
+            'color' => 'red',
+            'model' => 'apple',
+        ]
+    );
+
+
+    $output = $collection->diffAssocUsing(
+        [
+            'Type'  => 'fruit',
+            'color' => 'red',
+            'model' => 'apple',
+        ],
+        'strnatcmp'
+    );
+
+    dd($output->all());
+});
