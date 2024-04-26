@@ -196,3 +196,10 @@ Route::get('29', static function ()
     $usernameDuplicates = $users->duplicates('username');
     dd($mobileDuplicates, $usernameDuplicates);
 });
+
+Route::get('30', static function ()
+{
+    $numbers = collect(['1', '1', 1, 1]);
+    $duplicates = $numbers->duplicatesStrict();
+    dd($duplicates);
+});
