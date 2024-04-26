@@ -165,3 +165,14 @@ Route::get('27', static function ()
 
     dd($output);
 });
+
+Route::get('28', static function ()
+{
+    $collection = collect(['armin', 'developer', 'laravel']);
+
+    $collection->dump();
+
+    echo '<hr>';
+
+    echo 'dump succeeded.';
+});
