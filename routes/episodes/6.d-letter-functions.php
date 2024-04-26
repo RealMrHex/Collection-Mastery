@@ -176,3 +176,23 @@ Route::get('28', static function ()
 
     echo 'dump succeeded.';
 });
+
+Route::get('29', static function ()
+{
+    $numbers    = collect([1, 1, 1, 2, 3, 3, 4, 5, 5, 5, 5, 6]);
+    $duplicates = $numbers->duplicates();
+    // dd($duplicates);
+
+    $users              = collect(
+        [
+            ['mobile' => '+989121001010', 'username' => 'mentionhex'],
+            ['mobile' => '+989121001011', 'username' => 'mentionhex'],
+            ['mobile' => '+989121001010', 'username' => 'mentionhex2'],
+            ['mobile' => '+989121001013', 'username' => 'mentionhex'],
+            ['mobile' => '+989121001010', 'username' => 'mentionhex4'],
+        ]
+    );
+    $mobileDuplicates   = $users->duplicates('mobile');
+    $usernameDuplicates = $users->duplicates('username');
+    dd($mobileDuplicates, $usernameDuplicates);
+});
