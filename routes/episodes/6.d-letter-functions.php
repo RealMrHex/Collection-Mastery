@@ -141,7 +141,27 @@ Route::get('26', static function ()
             ['product' => 'Chair', 'price' => 100],
         ]
     );
-    $output = $products->doesntContain('product', 'Table');
+    $output   = $products->doesntContain('product', 'Table');
     dd($output);
+});
 
+Route::get('27', static function ()
+{
+    $data = collect(
+        [
+            'products'         => [
+                'desk'  => ['price' => '120$', 'qty' => 1],
+                'chair' => ['price' => '140$', 'qty' => 2],
+                'watch' => ['price' => '150$', 'qty' => 3],
+            ],
+            'shipping_methods' => [
+                'uber'   => ['price' => '50$', 'est_time' => '2h'],
+                'yandex' => ['price' => '10$', 'est_time' => '3d'],
+            ],
+        ]
+    );
+
+    $output = $data->dot();
+
+    dd($output);
 });
